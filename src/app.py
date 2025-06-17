@@ -21,52 +21,58 @@ app.mount("/static", StaticFiles(directory=os.path.join(Path(__file__).parent,
 
 # In-memory activity database
 activities = {
-    "Basketball": {
-        "type": "Sports",
+    "Chess Club": {
+        "description": "Learn strategies and compete in chess tournaments",
+        "schedule": "Fridays, 3:30 PM - 5:00 PM",
+        "max_participants": 12,
+        "participants": ["michael@mergington.edu", "daniel@mergington.edu"]
+    },
+    "Programming Class": {
+        "description": "Learn programming fundamentals and build software projects",
+        "schedule": "Tuesdays and Thursdays, 3:30 PM - 4:30 PM",
+        "max_participants": 20,
+        "participants": ["emma@mergington.edu", "sophia@mergington.edu"]
+    },
+    "Gym Class": {
+        "description": "Physical education and sports activities",
+        "schedule": "Mondays, Wednesdays, Fridays, 2:00 PM - 3:00 PM",
+        "max_participants": 30,
+        "participants": ["john@mergington.edu", "olivia@mergington.edu"]
+    },
+    "Basketball Team": {
+        "description": "Competitive basketball training and games",
+        "schedule": "Tuesdays and Thursdays, 4:00 PM - 6:00 PM",
+        "max_participants": 15,
         "participants": []
     },
-    "Soccer": {
-        "type": "Sports",
+    "Swimming Club": {
+        "description": "Swimming training and water sports",
+        "schedule": "Mondays and Wednesdays, 3:30 PM - 5:00 PM",
+        "max_participants": 20,
         "participants": []
     },
-    "Tennis": {  # New sports activity
-        "type": "Sports",
-        "participants": []
-    },
-    "Volleyball": {  # New sports activity
-        "type": "Sports",
+    "Art Studio": {
+        "description": "Express creativity through painting and drawing",
+        "schedule": "Wednesdays, 3:30 PM - 5:00 PM",
+        "max_participants": 15,
         "participants": []
     },
     "Drama Club": {
-        "type": "Artistic",
+        "description": "Theater arts and performance training",
+        "schedule": "Tuesdays, 4:00 PM - 6:00 PM",
+        "max_participants": 25,
         "participants": []
     },
-    "Choir": {
-        "type": "Artistic",
+    "Debate Team": {
+        "description": "Learn public speaking and argumentation skills",
+        "schedule": "Thursdays, 3:30 PM - 5:00 PM",
+        "max_participants": 16,
         "participants": []
     },
-    "Photography": {  # New artistic activity
-        "type": "Artistic",
-        "participants": []
-    },
-    "Dance": {  # New artistic activity
-        "type": "Artistic",
-        "participants": []
-    },
-    "Chess Club": {
-        "type": "Intellectual",
-        "participants": []
-    },
-    "Mathletes": {
-        "type": "Intellectual",
-        "participants": []
-    },
-    "Debate Team": {  # New intellectual activity
-        "type": "Intellectual",
-        "participants": []
-    },
-    "Robotics Club": {  # New intellectual activity
-        "type": "Intellectual",
+    "Science Club": {
+        "description": "Hands-on experiments and scientific exploration",
+        "schedule": "Fridays, 3:30 PM - 5:00 PM",
+        "max_participants": 20,
         "participants": []
     }
 }
@@ -88,10 +94,6 @@ def signup_for_activity(activity_name: str, email: str):
     # Validate activity exists
     if activity_name not in activities:
         raise HTTPException(status_code=404, detail="Activity not found")
-
-    # Validate student is not already signed up
-    if email in activities[activity_name]["participants"]:
-        raise HTTPException(status_code=400, detail="Student already signed up for this activity")
 
     # Get the specific activity
     activity = activities[activity_name]
