@@ -33,7 +33,7 @@ activities = {
         "type": "Sports",
         "participants": []
     },
-    "Swimming": {  # New sports activity
+    "Volleyball": {  # New sports activity
         "type": "Sports",
         "participants": []
     },
@@ -49,7 +49,7 @@ activities = {
         "type": "Artistic",
         "participants": []
     },
-    "Painting": {  # New artistic activity
+    "Dance": {  # New artistic activity
         "type": "Artistic",
         "participants": []
     },
@@ -65,7 +65,7 @@ activities = {
         "type": "Intellectual",
         "participants": []
     },
-    "Science Olympiad": {  # New intellectual activity
+    "Robotics Club": {  # New intellectual activity
         "type": "Intellectual",
         "participants": []
     }
